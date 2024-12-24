@@ -113,6 +113,50 @@ async with Client('http://localhost:8083') as client:
    print(f"Session closed")
 ```
 
+The returned results will be like:
+```json
+{
+  "isQueryResult": true,
+  "jobID": "a0ad286b7259d4755327ce4969a8ec97",
+  "nextResultUri": "/v2/sessions/7625ad82-b23b-4118-9683-4a46b7c5022a/operations/353994b9-532d-4c0e-9258-688ec777f948/result/1?rowFormat=JSON",
+  "resultKind": "SUCCESS_WITH_CONTENT",
+  "resultType": "PAYLOAD",
+  "results": {
+    "columns": [
+      {
+        "name": "age",
+        "logicalType": {
+          "type": "INTEGER",
+          "nullable": false
+        },
+        "comment": null
+      },
+      {
+        "name": "name",
+        "logicalType": {
+          "type": "CHAR",
+          "nullable": false,
+          "length": 12
+        },
+        "comment": null
+      }
+    ],
+    "columnInfos": [],
+    "data": [
+      {
+        "kind": "INSERT",
+        "fields": [
+          23,
+          "Alice Liddel"
+        ]
+      }
+    ],
+    "fieldGetters": [],
+    "rowFormat": "JSON"
+  }
+}
+```
+
 By default, when you're calling an HTTPS API it will attempt to verify that SSL is working correctly. Using certificate verification is highly recommended most of the time, but sometimes you may need to authenticate to a server (especially an internal server) using a custom certificate bundle.
 
 ```python
@@ -177,4 +221,21 @@ client = Client(
 )
 # Note that base_url needs to be re-set, as would any shared cookies, headers, etc.
 client.set_httpx_client(httpx.Client(base_url="http://localhost:80083"))
+```
+
+# Developer
+
+1. Quick start
+```
+# code gen
+make py_119
+
+# test
+cd flink-sql-gateway-client
+pytest tests
+
+# tag & release
+git tag release-1.19.alpha20241225
+git push origin release-1.19.alpha20241225
+
 ```

@@ -3,31 +3,44 @@ name: Upload Python Package
 on:
   push:
     tags:
-      - 'release-*'  # Triggers on any tag starting with 'release-'
+      - 'release-*'
 
 permissions:
-  contents: read
+  contents: write    # Updated to allow release creation
+  id-token: write   # Still needed for PyPI trusted publishing
 
 jobs:
   release-build:
     runs-on: ubuntu-latest
-
+    
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.9"
-
-      - name: Install Poetry
+      
+      - name: Install poetry
         run: |
-          python -m pip install --upgrade pip
           python -m pip install poetry
           poetry config virtualenvs.create false
 
-      - name: Build release distributions
+      - name: Set version from tag
         run: |
-          poetry build
+          VERSION=${GITHUB_REF#refs/tags/release-}
+          poetry version $VERSION
+          echo "Publishing version: $VERSION"
+
+      - name: Build release distributions
+        run: poetry build
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload distributions
         uses: actions/upload-artifact@v4
