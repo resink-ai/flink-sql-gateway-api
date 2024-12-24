@@ -5,6 +5,8 @@ description = "A client library for accessing Flink SQL Gateway REST API"
 authors = ["Shijing Lu <shijing.lu@gmail.com>"]
 readme = "README.md"
 license = "Apache-2.0"
+repository = "https://github.com/resink-ai/flink-sql-gateway-client"
+keywords = ["Flink SQL Gateway", "Python", "Asyc Client"]
 packages = [{ include = "flink_gateway_api" }]
 include = ["CHANGELOG.md", "flink_gateway_api/py.typed"]
 
