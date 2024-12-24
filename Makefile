@@ -21,6 +21,7 @@ py_119: download
 		--path $(YAML_119) \
 		--overwrite \
 		--config $(CONFIG)
+	cp -v README.md flink-sql-gateway-client/
 	cp -rv spec/py/* flink-sql-gateway-client/
 
 py_120: download
@@ -28,4 +29,5 @@ py_120: download
 		--path $(YAML_120) \
 		--overwrite \
 		--config $(CONFIG)
+	cp -v README.md flink-sql-gateway-client/
 	cp -rv spec/py/* flink-sql-gateway-client/
