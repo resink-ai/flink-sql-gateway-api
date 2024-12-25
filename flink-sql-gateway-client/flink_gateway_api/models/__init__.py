@@ -24,6 +24,13 @@ from .open_session_request_body import OpenSessionRequestBody
 from .open_session_request_body_properties import OpenSessionRequestBodyProperties
 from .open_session_response_body import OpenSessionResponseBody
 from .operation_status_response_body import OperationStatusResponseBody
+from .refresh_materialized_table_request_body import RefreshMaterializedTableRequestBody
+from .refresh_materialized_table_request_body_dynamic_options import RefreshMaterializedTableRequestBodyDynamicOptions
+from .refresh_materialized_table_request_body_execution_config import RefreshMaterializedTableRequestBodyExecutionConfig
+from .refresh_materialized_table_request_body_static_partitions import (
+    RefreshMaterializedTableRequestBodyStaticPartitions,
+)
+from .refresh_materialized_table_response_body import RefreshMaterializedTableResponseBody
 from .resolved_expression import ResolvedExpression
 from .resolved_schema import ResolvedSchema
 from .result_info import ResultInfo
@@ -61,6 +68,11 @@ __all__ = (
     "OpenSessionRequestBodyProperties",
     "OpenSessionResponseBody",
     "OperationStatusResponseBody",
+    "RefreshMaterializedTableRequestBody",
+    "RefreshMaterializedTableRequestBodyDynamicOptions",
+    "RefreshMaterializedTableRequestBodyExecutionConfig",
+    "RefreshMaterializedTableRequestBodyStaticPartitions",
+    "RefreshMaterializedTableResponseBody",
     "ResolvedExpression",
     "ResolvedSchema",
     "ResultInfo",
