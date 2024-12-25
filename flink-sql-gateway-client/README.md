@@ -226,16 +226,23 @@ client.set_httpx_client(httpx.Client(base_url="http://localhost:80083"))
 # Developer
 
 1. Quick start
-```
+```bash
 # code gen
-make py_119
+make py_118 # or 
+make py_119 # or
+make py_120
 
 # test
-cd flink-sql-gateway-client
-pytest tests
+( 
+  cd flink-sql-gateway-client && pytest tests
+)
+
+# check current version
+cat flink-sql-gateway-client/pyproject.toml | grep version
+version=$(cat flink-sql-gateway-client/pyproject.toml| grep version | cut -d '"' -f2)
 
 # tag & release
-git tag release-1.19.alpha20241225
-git push origin release-1.19.alpha20241225
+git tag "release-$version"
+git push origin "release-$version"
 
 ```

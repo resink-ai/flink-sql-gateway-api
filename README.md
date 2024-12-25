@@ -228,7 +228,9 @@ client.set_httpx_client(httpx.Client(base_url="http://localhost:80083"))
 1. Quick start
 ```bash
 # code gen
-make py_119
+make py_118 # or 
+make py_119 # or
+make py_120
 
 # test
 ( 
