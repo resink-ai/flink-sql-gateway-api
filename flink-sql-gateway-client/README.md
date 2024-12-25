@@ -246,3 +246,14 @@ git tag "release-$version"
 git push origin "release-$version"
 
 ```
+
+2. Release non-alpha versions
+
+```bash
+make py_119 
+
+# Manually edit flink-sql-gateway-client/pyproject.toml with desired version
+version=$(cat flink-sql-gateway-client/pyproject.toml| grep version | cut -d '"' -f2)
+git tag "release-$version"
+git push origin "release-$version"
+```
