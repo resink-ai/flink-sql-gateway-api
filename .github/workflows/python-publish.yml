@@ -28,11 +28,11 @@ jobs:
       - name: Set version from tag
         run: |
           VERSION=${GITHUB_REF#refs/tags/release-}
-          poetry version $VERSION
+          poetry -C flink-sql-gateway-client/ version $VERSION
           echo "Publishing version: $VERSION"
 
       - name: Build release distributions
-        run: poetry build
+        run: poetry -C flink-sql-gateway-client/ build
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
@@ -46,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: release-dists
-          path: dist/
+          path: flink-sql-gateway-client/dist/
 
   pypi-publish:
     runs-on: ubuntu-latest
@@ -61,7 +61,7 @@ jobs:
     environment:
       name: pypi
       # OPTIONAL: uncomment and update to include your PyPI project URL in the deployment status:
-      # url: https://pypi.org/p/YOURPROJECT
+      url: https://pypi.org/project/flink-sql-gateway-api/
       #
       # ALTERNATIVE: if your GitHub Release name is the PyPI project version string
       # ALTERNATIVE: exactly, uncomment the following line instead:
@@ -72,9 +72,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: release-dists
-          path: dist/
+          path: flink-sql-gateway-client/dist/
 
       - name: Publish release distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          packages-dir: dist/
+          packages-dir: flink-sql-gateway-client/dist/
