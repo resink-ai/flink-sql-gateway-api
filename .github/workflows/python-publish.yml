@@ -32,7 +32,8 @@ jobs:
           echo "Publishing version: $VERSION"
 
       - name: Build release distributions
-        run: poetry -C flink-sql-gateway-client/ build
+        run: |
+          pushed flink-sql-gateway-client/ && poetry build && popd
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
