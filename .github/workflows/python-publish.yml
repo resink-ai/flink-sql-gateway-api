@@ -33,7 +33,7 @@ jobs:
 
       - name: Build release distributions
         run: |
-          pushed flink-sql-gateway-client/ && poetry build && popd
+          pushd flink-sql-gateway-client/ && poetry build && popd
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
