@@ -5,22 +5,21 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.refresh_materialized_table_request_body import RefreshMaterializedTableRequestBody
-from ...models.refresh_materialized_table_response_body import RefreshMaterializedTableResponseBody
+from ...models.deploy_script_request_body import DeployScriptRequestBody
+from ...models.deploy_script_response_body import DeployScriptResponseBody
 from ...types import Response
 
 
 def _get_kwargs(
     session_handle: str,
-    identifier: str,
     *,
-    body: RefreshMaterializedTableRequestBody,
+    body: DeployScriptRequestBody,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/sessions/{session_handle}/materialized-tables/{identifier}/refresh",
+        "url": f"/sessions/{session_handle}/scripts",
     }
 
     _body = body.to_dict()
@@ -34,9 +33,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[RefreshMaterializedTableResponseBody]:
+) -> Optional[DeployScriptResponseBody]:
     if response.status_code == 200:
-        response_200 = RefreshMaterializedTableResponseBody.from_dict(response.json())
+        response_200 = DeployScriptResponseBody.from_dict(response.json())
 
         return response_200
     if client.raise_on_unexpected_status:
@@ -47,7 +46,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[RefreshMaterializedTableResponseBody]:
+) -> Response[DeployScriptResponseBody]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -58,29 +57,26 @@ def _build_response(
 
 def sync_detailed(
     session_handle: str,
-    identifier: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: RefreshMaterializedTableRequestBody,
-) -> Response[RefreshMaterializedTableResponseBody]:
-    """Refresh materialized table
+    body: DeployScriptRequestBody,
+) -> Response[DeployScriptResponseBody]:
+    """Deploy the script in application mode
 
     Args:
         session_handle (str):
-        identifier (str):
-        body (RefreshMaterializedTableRequestBody):
+        body (DeployScriptRequestBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RefreshMaterializedTableResponseBody]
+        Response[DeployScriptResponseBody]
     """
 
     kwargs = _get_kwargs(
         session_handle=session_handle,
-        identifier=identifier,
         body=body,
     )
 
@@ -93,29 +89,26 @@ def sync_detailed(
 
 def sync(
     session_handle: str,
-    identifier: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: RefreshMaterializedTableRequestBody,
-) -> Optional[RefreshMaterializedTableResponseBody]:
-    """Refresh materialized table
+    body: DeployScriptRequestBody,
+) -> Optional[DeployScriptResponseBody]:
+    """Deploy the script in application mode
 
     Args:
         session_handle (str):
-        identifier (str):
-        body (RefreshMaterializedTableRequestBody):
+        body (DeployScriptRequestBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RefreshMaterializedTableResponseBody
+        DeployScriptResponseBody
     """
 
     return sync_detailed(
         session_handle=session_handle,
-        identifier=identifier,
         client=client,
         body=body,
     ).parsed
@@ -123,29 +116,26 @@ def sync(
 
 async def asyncio_detailed(
     session_handle: str,
-    identifier: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: RefreshMaterializedTableRequestBody,
-) -> Response[RefreshMaterializedTableResponseBody]:
-    """Refresh materialized table
+    body: DeployScriptRequestBody,
+) -> Response[DeployScriptResponseBody]:
+    """Deploy the script in application mode
 
     Args:
         session_handle (str):
-        identifier (str):
-        body (RefreshMaterializedTableRequestBody):
+        body (DeployScriptRequestBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[RefreshMaterializedTableResponseBody]
+        Response[DeployScriptResponseBody]
     """
 
     kwargs = _get_kwargs(
         session_handle=session_handle,
-        identifier=identifier,
         body=body,
     )
 
@@ -156,30 +146,27 @@ async def asyncio_detailed(
 
 async def asyncio(
     session_handle: str,
-    identifier: str,
     *,
     client: Union[AuthenticatedClient, Client],
-    body: RefreshMaterializedTableRequestBody,
-) -> Optional[RefreshMaterializedTableResponseBody]:
-    """Refresh materialized table
+    body: DeployScriptRequestBody,
+) -> Optional[DeployScriptResponseBody]:
+    """Deploy the script in application mode
 
     Args:
         session_handle (str):
-        identifier (str):
-        body (RefreshMaterializedTableRequestBody):
+        body (DeployScriptRequestBody):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        RefreshMaterializedTableResponseBody
+        DeployScriptResponseBody
     """
 
     return (
         await asyncio_detailed(
             session_handle=session_handle,
-            identifier=identifier,
             client=client,
             body=body,
         )

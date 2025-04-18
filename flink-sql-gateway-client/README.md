@@ -242,27 +242,35 @@ client.set_httpx_client(httpx.Client(base_url="http://localhost:80083"))
 # code gen
 make py_118 # or
 make py_119 # or
-make py_120
+make py_120 # or
+make py_21_v3 # or
+make py_21_v4
 
-# test
-(
-  cd flink-sql-gateway-client && pytest tests
-)
+# release
+make release
+```
 
-# check current version
+2. Manual release
+
+```shell
+# 1. test, exit if fail
+cd $(rev-parse --show-toplevel)/flink-sql-gateway-client && pytest tests
+
+# 2. check current version
+cd $(rev-parse --show-toplevel)
 cat flink-sql-gateway-client/pyproject.toml | grep version
 version=$(cat flink-sql-gateway-client/pyproject.toml| grep version | cut -d '"' -f2)
 
-# tag & release
+# 3. tag & release
 cd $(rev-parse --show-toplevel)
 git add -u
 git commit -m
+git tag -d $release_tag || true
 git tag "release-$version"
 git push origin "release-$version"
-
 ```
 
-2. Release non-alpha versions
+3. Release non-alpha versions
 
 ```bash
 make py_119
