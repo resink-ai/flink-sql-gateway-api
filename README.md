@@ -254,6 +254,9 @@ cat flink-sql-gateway-client/pyproject.toml | grep version
 version=$(cat flink-sql-gateway-client/pyproject.toml| grep version | cut -d '"' -f2)
 
 # tag & release
+cd $(rev-parse --show-toplevel)
+git add -u
+git commit -m
 git tag "release-$version"
 git push origin "release-$version"
 
