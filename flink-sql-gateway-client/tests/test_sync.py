@@ -56,7 +56,16 @@ class TestSyncCalls(unittest.TestCase):
                 client=client,
                 row_format=RowFormat.JSON,
             )
-            print(f"Fetch return: {json.dumps(fetch_return.to_dict())}")
+            print(f"[0] Fetch return: {json.dumps(fetch_return.to_dict())}")
+            
+            fetch_return = fetch_results.sync(
+                responses.session_handle,
+                select_result.operation_handle,
+                1,
+                client=client,
+                row_format=RowFormat.JSON,
+            )
+            print(f"[1] Fetch return: {json.dumps(fetch_return.to_dict())}")
 
             close_session.sync(responses.session_handle, client=client)
             print(f"Session closed")
