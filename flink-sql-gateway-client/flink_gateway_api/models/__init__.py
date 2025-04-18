@@ -8,6 +8,9 @@ from .complete_statement_response_body import CompleteStatementResponseBody
 from .configure_session_request_body import ConfigureSessionRequestBody
 from .constraint_type import ConstraintType
 from .data_type import DataType
+from .deploy_script_request_body import DeployScriptRequestBody
+from .deploy_script_request_body_execution_config import DeployScriptRequestBodyExecutionConfig
+from .deploy_script_response_body import DeployScriptResponseBody
 from .execute_statement_request_body import ExecuteStatementRequestBody
 from .execute_statement_request_body_execution_config import ExecuteStatementRequestBodyExecutionConfig
 from .execute_statement_response_body import ExecuteStatementResponseBody
@@ -24,6 +27,13 @@ from .open_session_request_body import OpenSessionRequestBody
 from .open_session_request_body_properties import OpenSessionRequestBodyProperties
 from .open_session_response_body import OpenSessionResponseBody
 from .operation_status_response_body import OperationStatusResponseBody
+from .refresh_materialized_table_request_body import RefreshMaterializedTableRequestBody
+from .refresh_materialized_table_request_body_dynamic_options import RefreshMaterializedTableRequestBodyDynamicOptions
+from .refresh_materialized_table_request_body_execution_config import RefreshMaterializedTableRequestBodyExecutionConfig
+from .refresh_materialized_table_request_body_static_partitions import (
+    RefreshMaterializedTableRequestBodyStaticPartitions,
+)
+from .refresh_materialized_table_response_body import RefreshMaterializedTableResponseBody
 from .resolved_expression import ResolvedExpression
 from .resolved_schema import ResolvedSchema
 from .result_info import ResultInfo
@@ -45,6 +55,9 @@ __all__ = (
     "ConfigureSessionRequestBody",
     "ConstraintType",
     "DataType",
+    "DeployScriptRequestBody",
+    "DeployScriptRequestBodyExecutionConfig",
+    "DeployScriptResponseBody",
     "ExecuteStatementRequestBody",
     "ExecuteStatementRequestBodyExecutionConfig",
     "ExecuteStatementResponseBody",
@@ -61,6 +74,11 @@ __all__ = (
     "OpenSessionRequestBodyProperties",
     "OpenSessionResponseBody",
     "OperationStatusResponseBody",
+    "RefreshMaterializedTableRequestBody",
+    "RefreshMaterializedTableRequestBodyDynamicOptions",
+    "RefreshMaterializedTableRequestBodyExecutionConfig",
+    "RefreshMaterializedTableRequestBodyStaticPartitions",
+    "RefreshMaterializedTableResponseBody",
     "ResolvedExpression",
     "ResolvedSchema",
     "ResultInfo",

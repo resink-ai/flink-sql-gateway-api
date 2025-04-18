@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flink-sql-gateway-api"
-version = "1.18.alpha20250418"
+version = "2.1.alpha20250418"
 description = "A client library for accessing Flink SQL Gateway REST API"
 authors = ["Shijing Lu <shijing.lu@gmail.com>"]
 readme = "README.md"
