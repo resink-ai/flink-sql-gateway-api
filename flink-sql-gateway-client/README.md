@@ -5,12 +5,12 @@ A client library for accessing Flink SQL Gateway REST API
 
 # Compartibility Overview
 
-| API Versions | Compatible Flink Versions | Comment                                                      |
-| ------------ | ------------------------- | ------------------------------------------------------------ |
-| API V1       | flink-1.16.2 -> flink-2.1 | Allow users to submit statements to the gateway and execute. |
-| API V2       | flink-1.17.2 -> flink-2.1 | Supports SQL Client to connect to the gateway.               |
-| API V3       | flink-1.20 -> flink-2.1   | Supports Materialized Table refresh operation.               |
-| API V4       | flink-2.0 -> flink-2.1    | Supports to deploy script in application mode.               |
+| API Versions | Compatible Flink Versions | Comment                                                      |                                  |
+| ------------ | ------------------------- | ------------------------------------------------------------ | -------------------------------- |
+| API V1       | flink-1.16.2 -> flink-2.1 | Allow users to submit statements to the gateway and execute. |                                  |
+| API V2       | flink-1.17.2 -> flink-2.1 | Supports SQL Client to connect to the gateway.               | Default starting from flink-1.17 |
+| API V3       | flink-1.20 -> flink-2.1   | Supports Materialized Table refresh operation.               | Default starting from flink-1.20 |
+| API V4       | flink-2.0 -> flink-2.1    | Supports to deploy script in application mode.               |                                  |
 
 ## Usage
 
