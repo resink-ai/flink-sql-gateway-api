@@ -12,6 +12,11 @@ A client library for accessing Flink SQL Gateway REST API
 | API V3       | flink-1.20 -> flink-2.1   | Supports Materialized Table refresh operation.               | Default starting from flink-1.20 |
 | API V4       | flink-2.0 -> flink-2.1    | Supports to deploy script in application mode.               |                                  |
 
+# Which version should I use?
+
+- `pip install flink-sql-gateway-api==1.19.0` if `1.17 <= flink version < 1.20`
+- `pip install flink-sql-gateway-api==2.1.0` if `1.20 <= flink version`
+
 ## Usage
 
 First, create a client:
