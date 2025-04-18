@@ -48,7 +48,7 @@ class TestAsyncCalls(unittest.IsolatedAsyncioTestCase):
                                                             }))
 
             print(f"Select result: {select_result}")
-            await asyncio.sleep(1)  # Changed time.sleep to asyncio.sleep
+            await asyncio.sleep(1)
             fetch_return = await fetch_results.asyncio(
                 responses.session_handle,
                 select_result.operation_handle,
